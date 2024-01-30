@@ -1,7 +1,3 @@
-import tkinter as tk
-from tkinter import scrolledtext, filedialog
-from threading import Thread
-from queue import Queue
 from urllib import response
 import requests
 from urllib.parse import urlparse, urljoin
@@ -12,34 +8,6 @@ from rich.console import Console
 from rich.table import Table
 from rich.markdown import Markdown
 from rich.traceback import install
-
-class DarkWebCrawlerGUI:
-    def __init__(self, root):
-        self.root = root
-        self.root.title("DarkWeb Crawler")
-        self.root.geometry("800x600")
-
-        self.init_gui()
-
-    def init_gui(self):
-        # Entry widget for URL
-        self.url_label = tk.Label(self.root, text="Enter URL:")
-        self.url_label.pack(pady=5)
-        self.url_entry = tk.Entry(self.root, width=50)
-        self.url_entry.pack(pady=5)
-
-        # Button to start crawling
-        self.crawl_button = tk.Button(self.root, text="Crawl", command=self.start_crawling)
-        self.crawl_button.pack(pady=10)
-
-        # ScrolledText widget to display output
-        self.output_text = scrolledtext.ScrolledText(self.root, wrap=tk.WORD, width=70, height=25)
-        self.output_text.pack(pady=10)
-
-        # Button to choose download folder
-        self.choose_folder_button = tk.Button(self.root, text="Choose Download Folder", command=self.choose_download_folder)
-        self.choose_folder_button.pack(pady=5)
-
 
 # init the colorama module
 colorama.init()
