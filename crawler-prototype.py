@@ -1,3 +1,5 @@
+#issues as on 26.02.2024 --> the image download option is working and it also says the number of assosicated images sucessfully but it did not download the images.
+#updated commit for the 2nd review on 27.02.24.
 from urllib import response
 import requests
 from urllib.parse import urlparse, urljoin
@@ -9,7 +11,7 @@ from rich.table import Table
 from rich.markdown import Markdown
 from rich.traceback import install
 
-# init the colorama module
+# colorama module for basic ui ----> ask saravanan for help
 colorama.init()
 GREEN = colorama.Fore.GREEN
 GRAY = colorama.Fore.LIGHTBLACK_EX
@@ -18,7 +20,7 @@ YELLOW = colorama.Fore.YELLOW
 CYAN = colorama.Fore.CYAN
 RESET = colorama.Fore.RESET
 
-# implementing TOR proxies
+# implementing TOR proxies -----> take a look at the TOR services status module before running the project in the new devices 
 session = requests.session()
 session.proxies["http"] = "socks5h://localhost:9050"
 session.proxies["https"] = "socks5h://localhost:9050"
@@ -48,7 +50,7 @@ console = Console()
 # traceback design
 install()
 
-# crawl function
+# crawl function handled by srithick
 
 
 def crawl(url):
@@ -77,7 +79,7 @@ def crawl(url):
 
     print(f"{BLUE}\n[+] Total Crawled links:", len(urls))
 
-# CREATE FOLDER
+# CREATE FOLDER ----> this one creates a folder but it doesnt download the assosicated images, so look at this guys
 
 
 def folder_create(images):
@@ -238,7 +240,7 @@ def crawlInt(url, max_urls=30):
         crawlInt(link, max_urls=max_urls)
 
 
-def scraping(url):
+def scraping(url): #sukant and harish module 
 
 	response = session.get(url)
 	
