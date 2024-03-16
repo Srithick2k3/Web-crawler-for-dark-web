@@ -1,5 +1,3 @@
-#issues as on 26.02.2024 --> the image download option is working and it also says the number of assosicated images sucessfully but it did not download the images.
-#updated commit for the 2nd review on 27.02.24.
 from urllib import response
 import requests
 from urllib.parse import urlparse, urljoin
@@ -11,7 +9,7 @@ from rich.table import Table
 from rich.markdown import Markdown
 from rich.traceback import install
 
-# colorama module for basic ui ----> ask saravanan for help
+# colorama module for basic ui 
 colorama.init()
 GREEN = colorama.Fore.GREEN
 GRAY = colorama.Fore.LIGHTBLACK_EX
@@ -20,7 +18,7 @@ YELLOW = colorama.Fore.YELLOW
 CYAN = colorama.Fore.CYAN
 RESET = colorama.Fore.RESET
 
-# implementing TOR proxies -----> take a look at the TOR services status module before running the project in the new devices 
+# implementing TOR proxies
 session = requests.session()
 session.proxies["http"] = "socks5h://localhost:9050"
 session.proxies["https"] = "socks5h://localhost:9050"
@@ -50,7 +48,6 @@ console = Console()
 # traceback design
 install()
 
-# crawl function handled by srithick
 
 
 def crawl(url):
@@ -79,7 +76,6 @@ def crawl(url):
 
     print(f"{BLUE}\n[+] Total Crawled links:", len(urls))
 
-# CREATE FOLDER ----> this one creates a folder but it doesnt download the assosicated images, so look at this guys
 
 
 def folder_create(images):
@@ -162,13 +158,8 @@ def download_images(images, folder_name):
             except:
                 pass
 
-        # There might be possible, that all
-        # images not download
-        # if all images download
         if count == len(images):
             print("All Images Downloaded!")
-
-        # if all images not download
         else:
             print(f"\nTotal {count} Images Downloaded Out of {len(images)}")
 
@@ -240,7 +231,7 @@ def crawlInt(url, max_urls=30):
         crawlInt(link, max_urls=max_urls)
 
 
-def scraping(url): #sukant and harish module 
+def scraping(url): 
 
 	response = session.get(url)
 	
